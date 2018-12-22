@@ -1,12 +1,15 @@
-class Tv(object):
+# Biésów Smãtk
 
+class Tv(object):
+	'''instantiation of TV class
+	object would have volume and channel attributes'''
 	def __init__(self, volume = '1', channel = '1'):
 		print('Jes włącził telezdrzélnik, co mô 100 karnôlów.')
 		print('\nkarnôl '+channel+'\ngłosnosc '+volume)
 		self.volume = volume
 		self.channel = channel
 
-
+	
 	#def volume_change(self):
 	#	volChange = ''
 	#	volume = int(self.volume)
@@ -24,8 +27,8 @@ class Tv(object):
 	#			print('Wpiszë "+" abò "-": ')
 	#	self.volume = str(volume)
 
-
 	def vol_plus(self):
+		'''volume up'''
 		volume = int(self.volume)
 		volume +=1
 		if volume >= 10:
@@ -34,6 +37,7 @@ class Tv(object):
 		print('\ngłosnosc\n'+' |' * volume)
 
 	def vol_minus(self):
+		'''volume down'''
 		volume = int(self.volume)
 		volume -=1
 		if volume <= 0:
@@ -42,6 +46,7 @@ class Tv(object):
 		print('\ngłosnosc\n'+' |' * volume)
 
 	def channel_change(self):
+		'''changing channel in range from 1 to 100 inclusive or changing not'''
 		channel = int(self.channel)
 		chanChange = int(input('\nPodôj numrã karnôlu: '))
 		if chanChange in range(1,101):
@@ -52,9 +57,11 @@ class Tv(object):
 		self.channel = str(channel)
 
 	def check(self):
+		'''checking channel and volume'''
 		print('\nkarnôl '+self.channel+'\ngłosnosc '+self.volume)
 
 def main():
+	'''main block of program'''
 	tv = Tv()
 	print("""
 		0 - skùńczë
@@ -62,19 +69,20 @@ def main():
 		2 - sprôwdzë karnôl i głosnosc
 		- - zmiészi głosnosc
 		+ - zwikszi głosnosc""")
-	choice = None
-	while choice != '0':
+	choice = None #loop of remote control
+	while choice != '0': #exit condition is zero
 		choice = input('\nWëbiérzë rozkôz: ')
-		if choice == '-':
+		if choice == '-': #volume down
 			tv.vol_minus()
-		elif choice == '+':
+		elif choice == '+': #volume up
 			tv.vol_plus()
-		elif choice == '1':
+		elif choice == '1': #channel change
 			tv.channel_change()
-		elif choice == '2':
+		elif choice == '2': #check channel and volume
 			tv.check()
-		elif choice == '0':
+		elif choice == '0': #exit
 			print('\nDo ùzdrzeniô!')
 		else:
-			print('\nlëchi wëbiér')
-main()
+			print('\nlëchi wëbiér') #other choice statement
+
+main() #calling main function
