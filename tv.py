@@ -48,12 +48,16 @@ class Tv(object):
 	def channel_change(self):
 		'''changing channel in range from 1 to 100 inclusive or changing not'''
 		channel = int(self.channel)
-		chanChange = int(input('\nPodôj numrã karnôlu: '))
+		try:
+			chanChange = int(input('\nPodôj numrã karnôlu: '))
+		except(ValueError):
+			print('\nNi ma taczégò karnôlu.')
+			chanChange = channel
 		if chanChange in range(1,101):
 			channel = chanChange
-			print('karnôl '+str(channel))
+			print('\nkarnôl '+str(channel))
 		else:
-			print('Ni ma taczégò karnôlu.')
+			print('\nNi ma taczégò karnôlu.')
 		self.channel = str(channel)
 
 	def check(self):
